@@ -1,0 +1,6 @@
+<resources>
+    <string name="app_name">Book Listing</string>
+    <string name="activity_book_listing_hit">Enter the seach string to find your book</string>
+    <string name="activity_book_listing_btn_search">Search</string>
+    <string name="activity_book_listing_empty_view_text">Enter the search criteria and hit \"Search\" button to start the search</string>
+</resources>
