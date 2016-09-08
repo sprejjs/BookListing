@@ -33,8 +33,6 @@ public class NetworkUtils {
         String response = "";
         HttpURLConnection urlConnection = null;
         try {
-            url = new URL("http://www.mysite.se/index.asp?data=99");
-
             urlConnection = (HttpURLConnection) url
                     .openConnection();
 
