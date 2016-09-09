@@ -12,14 +12,14 @@ public class Book {
     private String title;
 
     public Book(JSONObject json) {
+        this.authors = new ArrayList<>();
+
         try {
             JSONObject volumeInfo = json.getJSONObject("volumeInfo");
             this.title = volumeInfo.getString("title");
 
             //Authors
             JSONArray authors = volumeInfo.getJSONArray("authors");
-
-            this.authors = new ArrayList<>();
 
             for (int i = 0; i < authors.length(); i++) {
                 this.authors.add(authors.get(i).toString());
@@ -34,6 +34,10 @@ public class Book {
     }
 
     public String getAuthors() {
+        if (authors.isEmpty()) {
+            return "";
+        }
+
         if (authors.size() == 1) {
             return authors.get(0);
         }

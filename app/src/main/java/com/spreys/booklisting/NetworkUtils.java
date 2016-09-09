@@ -3,6 +3,7 @@ package com.spreys.booklisting;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.io.BufferedReader;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
@@ -36,17 +37,17 @@ public class NetworkUtils {
             urlConnection = (HttpURLConnection) url
                     .openConnection();
 
-            InputStream in = urlConnection.getInputStream();
+            InputStream inputStream = urlConnection.getInputStream();
 
-            InputStreamReader isw = new InputStreamReader(in);
+            BufferedReader reader = new BufferedReader(new InputStreamReader(inputStream, "UTF-8"), 8);
+            StringBuilder sb = new StringBuilder();
 
-            int data = isw.read();
-
-            while (data != -1) {
-                char current = (char) data;
-                data = isw.read();
-                response += current;
+            String line = null;
+            while ((line = reader.readLine()) != null)
+            {
+                sb.append(line).append("\n");
             }
+            response = sb.toString();
         } catch (Exception e) {
             e.printStackTrace();
         } finally {
